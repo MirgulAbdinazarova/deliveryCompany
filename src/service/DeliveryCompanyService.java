@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 public class DeliveryCompanyService {
     static   Scanner scannerS = new Scanner(System.in);
-    private ArrayList<DeliveryCompany> deliveryCompanies;
+    private ArrayList<DeliveryCompany> deliveryCompanies=new ArrayList<>();
 
 
     Scanner scannerN = new Scanner(System.in);
