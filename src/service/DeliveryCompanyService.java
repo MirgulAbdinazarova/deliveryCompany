@@ -32,20 +32,30 @@ public class DeliveryCompanyService {
         deliveryCompanies.add(new DeliveryCompany(scanner.nextLine()));
     }
 
-    public double getTotalFee( Customer customerName) {
+    public double getTotalFee() {
+        System.out.println("Enter customerName");
+        String customerName=scannerS.nextLine();
         double totalFee = 0.0;
         for (DeliveryCompany company : deliveryCompanies) {
             for (Customer cust : company.getCustomers()) {
                 if (customerName.equals(cust.getCustomerName())) {
-                    totalFee = cust.getOrder().stream().map(Order::getOrderFee).reduce(0.0, Double::sum);
-                }
+                    for (Order order : cust.getOrder()) {
 
+                        totalFee += order.getOrderFee();
+//                    totalFee = cust.getOrder().stream().map(Order::getOrderFee)
+//                            .reduce(0.0, Double::sum);
+
+                    }
+
+                }
             }
         }
         return totalFee;
     }
 
-    public double getCompanyProfit(String companyName){
+    public double getCompanyProfit(){
+        System.out.println("Enter company name");
+        String companyName=scannerS.nextLine();
         double profit=0.0;
         for (DeliveryCompany com:deliveryCompanies) {
             if(companyName.equals(com.getDeliveryCompanyName())){
